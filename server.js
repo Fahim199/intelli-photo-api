@@ -21,6 +21,10 @@ const db= knex({
 const appClarifai = new Clarifai.App({
   apiKey: 'e19573ee02d348aeb22358ff58f4e7cf'
 });
+app.get('/',(req,res) => {
+  res.send('Working....')
+
+})
 
 app.post('/imageurl',(req,res) =>{
   
@@ -104,6 +108,6 @@ app.put('/image', (req,res)=>{
     .then(entries =>res.json(entries[0].entries))
     .catch(err => res.status(400).json('Failed to update'))
 })
-app.listen(3000,()=>{
-    console.log('listening on 3000');
+app.listen(process.env.PORT || 3000,()=>{
+    console.log(`listening on ${process.env.PORT}`);
 })
