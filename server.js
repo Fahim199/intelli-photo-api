@@ -7,6 +7,9 @@ app.use(express.json());
 app.use(cors())
 const knex =require('knex');
 const CLarifai =require('clarifai');
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const db= knex({
     client: 'pg',
     connection: {
